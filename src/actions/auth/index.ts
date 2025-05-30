@@ -1,8 +1,8 @@
 import axios from "axios";
 import type { z } from "zod";
 import { loginSchema } from "../../zod_schema";
+import { LOGIN_URL } from "../../constant";
 
-const LOGIN_URL = import.meta.env.VITE_API_AUTH_URL;
 
 export const login = async (values: z.infer<typeof loginSchema>) => {
   const validatedFields = loginSchema.safeParse(values);

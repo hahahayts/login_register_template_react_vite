@@ -28,6 +28,12 @@ export const LoginForm = () => {
     },
   });
 
+  const handleLogin = () => {
+    login(form.getValues()).then((response) => {
+      console.log(response);
+    });
+  };
+
   return (
     <CardWrapper
       headerLabel="Welcome Back"
@@ -36,7 +42,7 @@ export const LoginForm = () => {
       showSocial
     >
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(login)} className="space-y-6">
+        <form onSubmit={form.handleSubmit(handleLogin)} className="space-y-6">
           <div className="space-y-4">
             {/* Email */}
             <FormField
