@@ -16,6 +16,8 @@ import {
 import { CardWrapper } from "./card-wrapper";
 import { loginSchema } from "../../zod_schema";
 import { Input } from "../ui/input";
+import { Button } from "../ui/button";
+import { login } from "../../actions/auth";
 
 export const LoginForm = () => {
   const form = useForm<z.infer<typeof loginSchema>>({
@@ -25,6 +27,7 @@ export const LoginForm = () => {
       password: "",
     },
   });
+
   return (
     <CardWrapper
       headerLabel="Welcome Back"
@@ -33,7 +36,7 @@ export const LoginForm = () => {
       showSocial
     >
       <Form {...form}>
-        <form action="" className="space-y-6">
+        <form onSubmit={form.handleSubmit(login)} className="space-y-6">
           <div className="space-y-4">
             {/* Email */}
             <FormField
@@ -68,6 +71,10 @@ export const LoginForm = () => {
                 </FormItem>
               )}
             />
+
+            <Button type="submit" variant={"default"} className="w-full">
+              Login
+            </Button>
           </div>
         </form>
       </Form>
